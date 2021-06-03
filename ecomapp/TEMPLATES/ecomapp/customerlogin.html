@@ -1,0 +1,22 @@
+{% extends 'includes/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class = "col-sm-4 offset-3">
+         <h2>Customer Login</h2>
+        <form action=" " method="post">
+            {% csrf_token %}
+
+            {{form | crispy}}
+            <br><button type="submit" class='btn btn-outline-success'>Login</button>
+            {% if error %}
+            <li style="color:red;">{{error}}</li>
+            {%endif%}
+
+        </form>
+        <P>Forgot Password?<a href="{% url 'ecomapp:passwordforgot' %}">Reset now</a></P>
+        <p>or don't have account?<a style='text-decoration:none' href="{% url 'ecomapp:customerregistration'%}{% if request.GET.next %}?next={{request.GET.next}}{% endif %}"> Register here</a></p>
+    </div>
+
+{% endblock %}
