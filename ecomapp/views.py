@@ -439,4 +439,17 @@ class AdminProductCreateView(AdminRequiredMixin, CreateView):
             ProductImage.objects.create(product=p, image=i)
         return super().form_valid(form)
 
+class AdminProductEditView(AdminRequiredMixin, UpdateView):
+    template_name = "adminpages/adminproductedit.html"
+    model = Product
+    fields = '__all__'
+    success_url = reverse_lazy('ecomapp:adminproductlist')
+
+class AdminProductDeleteView(AdminRequiredMixin, DeleteView):
+    template_name = "adminpages/adminproductdelete.html"
+    model = Product
+    context_object_name = 'product'
+    success_url = reverse_lazy('ecomapp:adminproductlist')
+
+
 

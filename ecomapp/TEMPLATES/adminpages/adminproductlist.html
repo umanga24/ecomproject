@@ -14,6 +14,8 @@
                     <th>Image</th>
                     <th>Price</th>
                     <th>Views</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
 
                 </tr>
 
@@ -26,6 +28,19 @@
                             <td><img src="{{p.image.url}}" style="height:65px;" alt=""> </td>
                             <td>{{p.selling_price}}</td>
                             <td>{{p.view_count}}</td>
+                            <td>
+                                <a href="{% url 'ecomapp:adminproductedit' p.slug%}">
+                                    <button class="btn btn-warning">Edit</button>
+                                </a>
+                            </td>
+
+                            <td>
+                                <a href="{% url 'ecomapp:adminproductdelete' p.slug%}">
+                                    <button class="btn btn-danger">Delete</button>
+                                </a>
+
+                            </td>
+
 
 
 
